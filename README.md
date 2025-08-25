@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sistema de Agendamentos
 
-## Getting Started
+Sistema completo para controle de clientes e agendamentos desenvolvido em Next.js com Supabase.
 
-First, run the development server:
+## 🚀 Funcionalidades
 
+- **Autenticação e Autorização**: Sistema completo com JWT e RLS (Row Level Security)
+- **Gestão de Usuários**: Controle de perfis (Admin, Funcionário, Cliente)
+- **Agendamentos**: Sistema completo de agendamentos com validação de conflitos
+- **Serviços**: Cadastro e gestão de serviços oferecidos
+- **Agendas**: Configuração de horários de funcionamento
+- **Clientes**: Cadastro e gestão de clientes
+- **Financeiro**: Controle de transações financeiras
+- **Dashboard**: Visão geral do sistema
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Frontend**: Next.js 14, React, TypeScript, Tailwind CSS
+- **Backend**: Supabase (PostgreSQL, Auth, RLS)
+- **Autenticação**: Supabase Auth com JWT Claims personalizados
+- **Estilização**: Tailwind CSS
+- **Ícones**: Lucide React
+
+## 📋 Pré-requisitos
+
+- Node.js 18+ 
+- npm ou yarn
+- Conta no Supabase
+
+## 🔧 Instalação
+
+1. Clone o repositório:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Garibaalves/sistema-agendamentos.git
+cd sistema-agendamentos
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instale as dependências:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Configure as variáveis de ambiente:
+```bash
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Edite o arquivo `.env.local` com suas credenciais do Supabase:
+```env
+NEXT_PUBLIC_SUPABASE_URL=sua_url_do_supabase
+NEXT_PUBLIC_SUPABASE_ANON_KEY=sua_chave_anonima_do_supabase
+```
 
-## Learn More
+4. Execute o projeto:
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🗄️ Configuração do Banco de Dados
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O projeto inclui scripts SQL para configuração completa do banco:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Políticas RLS**: `POLITICAS_RLS_COMPLETAS_JWT.sql`
+2. **JWT Claims**: `CONFIGURAR_JWT_CLAIMS.sql`
+3. **Correções**: Vários scripts de correção disponíveis na raiz do projeto
 
-## Deploy on Vercel
+## 🔐 Sistema de Autenticação
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+O sistema utiliza:
+- **Supabase Auth** para autenticação
+- **JWT Claims personalizados** para autorização
+- **Row Level Security (RLS)** para segurança dos dados
+- **Três níveis de usuário**: Admin, Funcionário, Cliente
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📱 Páginas Disponíveis
+
+- `/login` - Página de login
+- `/register` - Cadastro de usuários
+- `/dashboard` - Dashboard principal
+- `/agendamentos` - Lista de agendamentos
+- `/novo-agendamento` - Criar novo agendamento
+- `/gestao-agendamentos` - Gestão de agendamentos (Admin/Funcionário)
+- `/servicos` - Gestão de serviços
+- `/agendas` - Configuração de horários
+- `/clientes` - Gestão de clientes
+- `/usuarios` - Gestão de usuários (Admin)
+- `/financeiro` - Controle financeiro
+
+## 🎯 Funcionalidades Especiais
+
+### Validação de Conflitos de Horários
+O sistema verifica automaticamente:
+- Sobreposição entre serviços
+- Duração de cada serviço
+- Horários de início e término
+- Conflitos com agendamentos anteriores e posteriores
+
+### Sistema de Permissões
+- **Admin**: Acesso total ao sistema
+- **Funcionário**: Gestão de agendamentos e clientes
+- **Cliente**: Visualização dos próprios agendamentos
+
+## 🚀 Deploy
+
+O projeto está configurado para deploy fácil em plataformas como:
+- Vercel
+- Netlify
+- Railway
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
+
+## 👨‍💻 Desenvolvedor
+
+Desenvolvido por [Gariba Alves](https://github.com/Garibaalves)
