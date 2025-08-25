@@ -199,9 +199,9 @@ export default function AgendasPage() {
 
       await fetchSchedules()
       resetForm()
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Erro ao salvar agenda:', err)
-      setError(err.message || 'Erro ao salvar agenda')
+      setError(err instanceof Error ? err.message : 'Erro ao salvar agenda')
     }
   }
 
@@ -229,9 +229,9 @@ export default function AgendasPage() {
 
       if (error) throw error
       await fetchSchedules()
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Erro ao excluir agenda:', err)
-      setError(err.message || 'Erro ao excluir agenda')
+      setError(err instanceof Error ? err.message : 'Erro ao excluir agenda')
     }
   }
 

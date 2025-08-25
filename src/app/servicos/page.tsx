@@ -92,8 +92,8 @@ export default function ServicesPage() {
       setEditingService(null)
       setFormData({ name: '', description: '', price: '', duration: '', is_active: true })
       fetchServices()
-    } catch (err: any) {
-      setError(err.message || 'Erro ao salvar serviço')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Erro ao salvar serviço')
     }
   }
 
@@ -121,8 +121,8 @@ export default function ServicesPage() {
       if (error) throw error
       setSuccess('Serviço excluído com sucesso!')
       fetchServices()
-    } catch (err: any) {
-      setError(err.message || 'Erro ao excluir serviço')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Erro ao excluir serviço')
     }
   }
 
@@ -136,8 +136,8 @@ export default function ServicesPage() {
       if (error) throw error
       setSuccess(`Serviço ${!currentStatus ? 'ativado' : 'desativado'} com sucesso!`)
       fetchServices()
-    } catch (err: any) {
-      setError(err.message || 'Erro ao alterar status do serviço')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Erro ao alterar status do serviço')
     }
   }
 

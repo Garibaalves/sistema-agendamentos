@@ -120,7 +120,7 @@ export default function GestaoAgendamentosPage() {
         return // Aguardar seleção no modal
       } else {
         // Para outros status, apenas atualizar normalmente
-        const updateData: any = { status: newStatus }
+        const updateData: { status: string; completed_at?: string } = { status: newStatus }
         
         const { error } = await supabase
           .from('appointments')

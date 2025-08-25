@@ -171,8 +171,8 @@ export default function AppointmentsPage() {
       setShowModal(false)
       setFormData({ client_id: '', service_id: '', appointment_date: '', appointment_time: '', notes: '' })
       fetchAppointments()
-    } catch (err: any) {
-      setError(err.message || 'Erro ao criar agendamento')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Erro ao criar agendamento')
     }
   }
 
@@ -186,8 +186,8 @@ export default function AppointmentsPage() {
       if (error) throw error
       setSuccess('Status do agendamento atualizado!')
       fetchAppointments()
-    } catch (err: any) {
-      setError(err.message || 'Erro ao atualizar status')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Erro ao atualizar status')
     }
   }
 

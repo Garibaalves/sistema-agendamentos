@@ -214,8 +214,8 @@ export default function NewAppointmentPage() {
         router.push('/agendamentos')
       }, 2000)
 
-    } catch (err: any) {
-      setError(err.message || 'Erro ao criar agendamento')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Erro ao criar agendamento')
     } finally {
       setSubmitting(false)
     }

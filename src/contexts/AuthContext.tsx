@@ -11,10 +11,10 @@ interface AuthContextType {
   user: User | null
   profile: Profile | null
   loading: boolean
-  signIn: (email: string, password: string) => Promise<{ error: any }>
-  signUp: (email: string, password: string, fullName: string, userType: 'admin' | 'client', phone?: string) => Promise<{ error: any }>
-  signUpWithPhone: (email: string, password: string, phone: string) => Promise<{ error: any }>
-  checkEmailExists: (email: string) => Promise<{ exists: boolean, error: any }>
+  signIn: (email: string, password: string) => Promise<{ error: Error | null }>
+  signUp: (email: string, password: string, fullName: string, userType: 'admin' | 'client', phone?: string) => Promise<{ error: Error | null }>
+  signUpWithPhone: (email: string, password: string, phone: string) => Promise<{ error: Error | null }>
+  checkEmailExists: (email: string) => Promise<{ exists: boolean, error: Error | null }>
   signOut: () => Promise<void>
   isAdmin: boolean
   isClient: boolean

@@ -55,9 +55,9 @@ export default function UsersPage() {
       } else {
         setUsers(rpcData || [])
       }
-    } catch (err) {
+    } catch (err: unknown) {
       console.error('Erro ao buscar usuários:', err)
-      setError('Erro ao carregar usuários')
+      setError(err instanceof Error ? err.message : 'Erro ao carregar usuários')
     } finally {
       setLoading(false)
     }
@@ -116,8 +116,8 @@ export default function UsersPage() {
       setEditingUser(null)
       setFormData({ email: '', full_name: '', user_type: 'client', password: '' })
       fetchUsers()
-    } catch (err: any) {
-      setError(err.message || 'Erro ao salvar usuário')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Erro ao salvar usuário')
     }
   }
 
@@ -155,8 +155,8 @@ export default function UsersPage() {
       
       setSuccess('Usuário excluído com sucesso!')
       fetchUsers()
-    } catch (err: any) {
-      setError(err.message || 'Erro ao excluir usuário')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Erro ao excluir usuário')
     }
   }
 
